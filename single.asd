@@ -31,7 +31,8 @@ along with Single in the file COPYING.  If not, see <http://www.gnu.org/licenses
   :serial t
   :description "Single - a single-character-based esolang"
   :components ((:file "defpackage")
-               (:file "parser"))
+               (:file "parser")
+               (:file "evalulator"))
   :depends-on (:smug))
 
 (defsystem :single-test

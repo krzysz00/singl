@@ -28,14 +28,14 @@ Special Operators and functions
    can assign arguments at any time, with the statement `$A|!`
  * `` (`^C`) Comment markers
  * `(xyzab)` Group markers. Code between them is parsed, then
-   evaluated unless at the end of something that groups, like
-   assignment. The last value in the group is returned as the value of
-   the group.
+   evaluated unless there are no possible arguments after the group,
+   like in assignment. The last value in the group is returned as the
+   value of the group.
  * `?txy` If `t` is 0, then evaluate `x` and discard `y`. 
    Otherwise, discard `x` and evaluate `y`.
  * `,txy` See `?` but test `t <= 0`, not `t = 0`.
  * `~tx`. Evaluate `t`. Evaluate `x` if `t ≠ 0`.
- * No numeric literals. You'll be using `&A = 64` and friends. 
+ * No numeric literals. You'll be using `@A = 64` and friends. 
 
 Parsing and evaluation proceeds left-to-right. 
 Precedence (high-to-low)
@@ -44,6 +44,7 @@ Precedence (high-to-low)
  3. `() -!`
  4. comments
  4. function application
+ 
 Functions (built-in)
 --------------------
 * `+xy`. Add `x` and `y`.
