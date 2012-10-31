@@ -17,14 +17,26 @@ You should have received a copy of the GNU General Public License
 along with Single in the file COPYING.  If not, see <http://www.gnu.org/licenses/>.
 |#
 
-(in-package #:single)
+(in-package :single)
 
-(eval-when (:compile-toplevel :load-toplevel :execute)
-  (use-package :lisp-unit))
+(defun =char-code (n)
+  (=satisfies #'(lambda (c) (= (char-code c) n))))
 
-(defun %run-tests ()
-  (lisp-unit:run-all-tests :dlist))
+(defun variable-char ()
+  (=let* ((char (=satisfies #'(lambda (c) (> (char-code c) 64)))))
+    (result (char-code char))))
 
-(defmethod asdf:perform ((o asdf:test-op) (system (eql (asdf:find-system 'single-test))))
-  (%run-tests))
+(defun modified-variable (modifier identifier)
+  (=let* ((_ (=char modifier))
+          (var (variable-char)))
+    (result (list identifier var))))
 
+(defun address () (modified-variable #\& 'address)
+(defun dereference () (modified-variable #\@ 'dereference))
+ 
+
+(defun char-as-symbol (char symbol)
+  (and (=char char) (result symbol)))
+
+(defun argument-bar ()
+  (char-as-symbol #\| 'argument))

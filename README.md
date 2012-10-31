@@ -1,9 +1,14 @@
 Single - A Single-Character-Based Esolang
 =========================================
 
+Variables
+---------
+A variable is any single character with ASCII value > 64 or any single
+character outside the ASCII range that is not otherwise reserved.
+
 Special Operators and functions
 -------------------------------
- * `&x` the address of `x`. `&x` is the unicode code point of `x`, as
+ * `&x` the address of `x`. `&x` is the Unicode code point of `x`, as
    returned by the lisp function `code-char`
  * `@x` the value at the variable with address `x`
  * `^x` output the value at `x`
@@ -17,16 +22,14 @@ Special Operators and functions
  * `(xyzab)` Group markers. Code between them is parsed, then
    evaluated unless at the end of something that groups, like
    assignment. 
- * `?txy` If `t` is 0, then evaluate `x`, with `t` as its first
-   argument and discard `y`. Otherwise, discard `x` and evaluate `y`
-   with `t` as its first argument.
+ * `?txy` If `t` is 0, then evaluate `x` and discard `y`. 
+   Otherwise, discard `x` and evaluate `y`.
  * `,txy` See `?` but test `t <= 0`, not `t = 0`.
- * `~tx`. Evaluate `t`. Evaluate `x` with t as its first argument if
-   `t ≠ 0`.
+ * `~tx`. Evaluate `t`. Evaluate `x` if `t ≠ 0`.
  * No numeric literals. You'll be using `&A = 64` and friends. 
 
 Precedence (high-to-low)
- 1. `@&^_|`
+ 1. `@&^_|` (one at a time)
  2. `,~?` 
  3. `() -!`
  5. function application

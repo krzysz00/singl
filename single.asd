@@ -14,7 +14,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with clos-diff in the file COPYING.  If not, see <http://www.gnu.org/licenses/>.
+along with Single in the file COPYING.  If not, see <http://www.gnu.org/licenses/>.
 |#
 
 (defpackage #:single-asd
@@ -29,9 +29,9 @@ along with clos-diff in the file COPYING.  If not, see <http://www.gnu.org/licen
   :in-order-to ((test-op (test-op #:dlist-test)))
   :author "Krzysztof Drewniak <krzysdrewniak <AT> gmail <DOT> com>"
   :serial t
-  :documentation "Single - a single-character-based esolang"
+  :description "Single - a single-character-based esolang"
   :components ((:file "defpackage")
-               )
+               (:file "parser"))
   :depends-on (:smug))
 
 (defsystem :single-test

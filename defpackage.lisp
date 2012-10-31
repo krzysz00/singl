@@ -1,5 +1,5 @@
 (defpackage :single
   (:use :cl :smug)
-  (:export :main))
+  (:export :main :parse))
 
 (in-package :single)
