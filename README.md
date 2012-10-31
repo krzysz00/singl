@@ -1,5 +1,5 @@
-Single --- A Single-Character (mostly) Esolang
-==============================================
+Single - A Single-Character-Based Esolang
+=========================================
 
 Special Operators and functions
 -------------------------------
@@ -14,8 +14,9 @@ Special Operators and functions
    sort of. This means that functions can assign arguments at any
    time, with the statement `-A|!`
  * `` (`^C`) Comment markers
- * `(xyzab)` Group markers. Code between them is parsed, then left
-   unevaluated until followed by a value. 
+ * `(xyzab)` Group markers. Code between them is parsed, then
+   evaluated unless at the end of something that groups, like
+   assignment. 
  * `?txy` If `t` is 0, then evaluate `x`, with `t` as its first
    argument and discard `y`. Otherwise, discard `x` and evaluate `y`
    with `t` as its first argument.
@@ -27,8 +28,7 @@ Special Operators and functions
 Precedence (high-to-low)
  1. `@&^_|`
  2. `,~?` 
- 3. `()`
- 4. `-!`
+ 3. `() -!`
  5. function application
 Functions (built-in)
 --------------------
@@ -37,3 +37,8 @@ Functions (built-in)
 * `*xy`. Multiply.
 * `/xy`. Divide (truncating).
 * `%xy`. Modulo.
+
+This language (Single) can be implemented by anyone under whatever
+license they like. This implementation of Single is under Copyright
+(C) 2012 Krzysztof Drewniak and released under the GNU General Public
+License version 3 or any later version. 
