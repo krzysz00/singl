@@ -94,4 +94,4 @@ along with Single in the file COPYING.  If not, see <http://www.gnu.org/licenses
 (defun entities () (one-or-more (entity)))
 
 (defun parse (thing)
-  (funcall (entities) thing))
+  (first (first (funcall (entities) thing))))
