@@ -23,7 +23,10 @@ along with Single in the file COPYING.  If not, see <http://www.gnu.org/licenses
   (=satisfies #'(lambda (c) (= (char-code c) n))))
 
 (defun variable-char ()
-  (=let* ((char (=satisfies #'(lambda (c) (> (char-code c) 64)))))
+  (=let* ((char (=satisfies 
+                 #'(lambda (c) 
+                     (every #'(lambda (x) (char/= c x)) 
+                            (coerce "&@^_$!|()?,~+-*/%" 'list))))))
     (result (char-code char))))
 
 (defun modified-variable (modifier identifier)
@@ -31,12 +34,64 @@ along with Single in the file COPYING.  If not, see <http://www.gnu.org/licenses
           (var (variable-char)))
     (result (list identifier var))))
 
-(defun address () (modified-variable #\& 'address)
-(defun dereference () (modified-variable #\@ 'dereference))
- 
+(defmacro syn-mod-var (char var)
+  `(defun ,var () (modified-variable ,char ',var)))
+
+(syn-mod-var #\& address)
+(syn-mod-var #\@ dereference)
+(syn-mod-var #\^ output)
+(syn-mod-var #\_ input)
+
+(defun modifiers ()
+  (=or (address) (dereference) (output) (input)))
 
 (defun char-as-symbol (char symbol)
-  (and (=char char) (result symbol)))
+  (=let* ((_ (=char char)))
+    (result symbol)))
 
-(defun argument-bar ()
-  (char-as-symbol #\| 'argument))
+(defmacro char-symbol (char var)
+  `(defun ,var () (char-as-symbol ,char ',var)))
+
+(char-symbol #\| argument)
+(char-symbol #\+ add)
+(char-symbol #\- subtract)
+(char-symbol #\* multiply)
+(char-symbol #\/ divide)
+(char-symbol #\% modulo)
+(char-symbol #\? if-zero)
+(char-symbol #\, if-less-than-zero)
+(char-symbol #\~ loop-until-zero)
+
+(defun symbols ()
+  (=or (argument) (add) (subtract) (multiply) (divide) (modulo)
+       (if-zero) (if-less-than-zero) (loop-until-zero)))
+
+(defun token ()
+  (=or (modifiers) (symbols) (variable-char)))
+
+(defun tokens () (one-or-more (token)))
+
+(defun grouping (left right marker)
+  (=let* ((_ (=char left))
+          (body (entities))
+          (_ (=char right)))
+    (result (cons marker body))))
+
+(defmacro defgroup (left right var)
+  `(defun ,var () (grouping ,left ,right ',var)))
+
+(defgroup #\( #\) group)
+(defgroup #\$ #\! assignment)
+(defgroup #\ #\ %comment)
+
+(defun comment ()
+  (=let* ((_ (%comment)))
+    (result nil)))
+
+(defun entity ()
+  (=or (token) (group) (assignment) (comment)))
+
+(defun entities () (one-or-more (entity)))
+
+(defun parse (thing)
+  (funcall (entities) thing))
