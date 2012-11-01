@@ -1,4 +1,4 @@
-Single - A Single-Character-Based Esolang
+Singl - A Single-Character-Based Esolang
 =========================================
 
 Variables
@@ -72,7 +72,7 @@ point. Variables may hold either groups or integers, which are signed
 and extend infinitely in both directions. All variables are global.
 There is no suggested calling convention, roll your own. 
 
-This language (Single) can be implemented by anyone under whatever
-license they like. This implementation of Single is under Copyright
+This language (Singl) can be implemented by anyone under whatever
+license they like. This implementation of Singl is under Copyright
 (C) 2012 Krzysztof Drewniak and released under the GNU General Public
 License version 3 or any later version. 
