@@ -119,12 +119,20 @@ along with Singl in the file COPYING.  If not, see <http://www.gnu.org/licenses/
 (defun clear ()
   (setf *contexts* nil *memory* (make-hash-table)))
 
+(defun argv ()
+  #+clisp ext:*args*
+  #+sbcl (cdr sb-ext:*posix-argv*))
+
 (defun main ()
-  (let ((input (make-array 1000 :element-type 'character :adjustable t :fill-pointer 0)))
-    (loop for c = (read-char *standard-input* nil nil)
+  (let ((input (make-array 1000 :element-type 'character :adjustable t :fill-pointer 0)) (file (and (argv) (first (argv)))))
+    (let ((stream *standard-input*))
+      (if file (setf stream (open file)))
+      (loop for c = (read-char stream nil nil)
          while c
          do (vector-push-extend c input))
+      (if file (close stream)))
     (clear)
     (evaluate input)
-    (force-output)))
+    (force-output)
+    #+clisp (ext:quit)))
 

@@ -78,8 +78,10 @@ Example programs
 
 Building and running programs
 -----------------------------
-Run either `build-clisp.sh` or `build-sbcl.sh`. Then, input the
-program on standard input, terminated by an EOF.
+Run either `build-clisp.sh` or `build-sbcl.sh`. This produces the
+executable `singl`. This executable can be called with the filename of
+the program as a command-line argument. If no filename is provided,
+the program is read from standard input.
 
 Licensing
 ---------
