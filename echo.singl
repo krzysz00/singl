@@ -1,0 +1,7 @@
+d($A|!~@A($B@A!^B$A+A1!).)!
+$↑($A|!_B$C-B&
+,C($@AB!↑+A)($@AB!$A+A!$@A-AA!)C)!
+$ś !Define two functions and a variable. 
+d prints a null-terminated string, and ↑ reads until a newline.
+ś is the "heap" pointer. The "heap" begins at U+2003 (8195 decimal),
+the em space.↑śdś
