@@ -59,7 +59,7 @@ along with Single in the file COPYING.  If not, see <http://www.gnu.org/licenses
 (char-symbol #\/ divide)
 (char-symbol #\% modulo)
 (char-symbol #\? if-zero)
-(char-symbol #\, if-less-than-zero)
+(char-symbol #\, if-<=-than-zero)
 (char-symbol #\~ loop-until-zero)
 
 (defun symbols ()
