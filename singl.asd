@@ -20,7 +20,7 @@ along with Singl in the file COPYING.  If not, see <http://www.gnu.org/licenses/
 (defpackage :singl-asd
   (:use :cl :asdf))
 
-(in-package :single-asd)
+(in-package :singl-asd)
 
 (defsystem :singl
   :name "singl"

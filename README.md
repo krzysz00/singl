@@ -72,6 +72,17 @@ point. Variables may hold either groups or integers, which are signed
 and extend infinitely in both directions. All variables are global.
 There is no suggested calling convention, roll your own. 
 
+Example programs
+----------------
+`hello-functiony.singl` is a "Hello, World" program.
+
+Building and running programs
+-----------------------------
+Run either `build-clisp.sh` or `build-sbcl.sh`. Then, input the
+program on standard input, terminated by an EOF.
+
+Licensing
+---------
 This language (Singl) can be implemented by anyone under whatever
 license they like. This implementation of Singl is under Copyright
 (C) 2012 Krzysztof Drewniak and released under the GNU General Public

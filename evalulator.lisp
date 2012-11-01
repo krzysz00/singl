@@ -121,12 +121,10 @@ along with Singl in the file COPYING.  If not, see <http://www.gnu.org/licenses/
 
 (defun main ()
   (let ((input (make-array 1000 :element-type 'character :adjustable t :fill-pointer 0)))
-    (loop for c = (read-char t nil nil)
+    (loop for c = (read-char *standard-input* nil nil)
          while c
          do (vector-push-extend c input))
     (clear)
     (evaluate input)
-    #+sbcl (sb-ext:quit)
-    #+(or clisp cmucl) (ext:quit)
-    #-(or sbcl clipt cmucl) (error "Please quit your Lisp implementation and help the pornitg effort.")))
+    (force-output)))
 
