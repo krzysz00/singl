@@ -41,7 +41,7 @@ Special Operators and functions
    Otherwise, discard `x` and evaluate `y`.
  * `,txy` See `?` but test `t <= 0`, not `t = 0`.
  * `~tx`. Evaluate `t`. Evaluate `x` if `t ≠ 0`. Repeat until `t = 0`. 
- * No numeric literals. You'll be using `&A = 64` and friends. 
+ * No numeric literals. You'll be using `&A = 65` and friends. 
 
 The values (for function call purposes) of `?,~^_` are undefined.
 Assignment provides the assigned value. Parsing and evaluation

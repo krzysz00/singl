@@ -64,7 +64,7 @@ along with Single in the file COPYING.  If not, see <http://www.gnu.org/licenses
 
 (defun symbols ()
   (=or (argument) (add) (subtract) (multiply) (divide) (modulo)
-       (if-zero) (if-less-than-zero) (loop-until-zero)))
+       (if-zero) (if-<=-than-zero) (loop-until-zero)))
 
 (defun token ()
   (=or (modifiers) (symbols) (variable-char)))
@@ -86,7 +86,7 @@ along with Single in the file COPYING.  If not, see <http://www.gnu.org/licenses
 
 (defun comment ()
   (=let* ((_ (%comment)))
-    (result nil)))
+    (result -1)))
 
 (defun entity ()
   (=or (token) (group) (assignment) (comment)))
