@@ -14,7 +14,7 @@ Special Operators and functions
 -------------------------------
  * `&x` the address of `x`. `&x` is the Unicode code point of `x`, as
    returned by the lisp function `code-char`
- * `@x` the value at the variable with the address that is the value `x`
+ * `@x` the value at the variable with the address that is the value of `x` (dereference `x`)
  * `^x` output the value at `x`.
  * `_x` input a character (value) to `x`. If EOF is reached, `x` is
    -1. 
